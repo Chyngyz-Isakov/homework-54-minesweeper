@@ -12,7 +12,7 @@
   margin: 30px auto;
 }
 
-.box {
+.Box {
   background: #ccc;
   display: flex;
   width: 50px;
@@ -21,4 +21,14 @@
   margin: 5px;
   border-radius: 5px;
   box-shadow: .2em .2em 0.3em #333;
+  cursor: pointer;
+}
+
+.Box:hover {
+  box-shadow: .2em .2em 0.3em skyblue;
+}
+
+.Box-clicked {
+  background: white;
+  border: 1px solid red;
 }

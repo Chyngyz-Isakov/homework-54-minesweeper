@@ -5,6 +5,7 @@ import GameBox from "./components/GameBox/GameBox";
 const App = () => {
 
     const createItems = () => {
+
         const items = [];
         for (let i = 0; i < 36; i++) {
             const box = {hasItem: false, clicked: false};
@@ -16,12 +17,20 @@ const App = () => {
 
         return items;
     }
-    console.log(createItems());
 
     const [items, setItems] = useState(createItems());
 
-    console.log(items);
 
+
+
+    const openBox = (id: number) => {
+        const itemsCopy = [...items];
+        const boxCopy = {...itemsCopy[id]};
+        boxCopy.clicked = true;
+        itemsCopy[id] = boxCopy;
+
+        setItems(itemsCopy);
+    };
 
 
     return (
@@ -29,10 +38,11 @@ const App = () => {
             <h2>Try to find a ring!</h2>
             <div className='box-wrap'>
                 {items.map((box, index) => (
-                    <GameBox key={index}
+                    <GameBox
+                             key={index}
                              hasItem={box.hasItem}
                              clicked={box.clicked}
-
+                             openBox={() => openBox(index)}
                     />
                 ))}
             </div>
