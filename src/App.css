@@ -2,3 +2,9 @@
   text-align: center;
 }
 
+.box-wrap {
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  margin: 30px auto;
+}
