@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import GameBox from "./components/GameBox/GameBox";
+import {ITriesProps} from "./components/types";
 
 const App = () => {
 
@@ -18,10 +19,16 @@ const App = () => {
         return items;
     }
 
+    const reset = () =>{
+        setItems(createItems());
+        setTries(0)
+    }
+
     const [items, setItems] = useState(createItems());
 
 
-
+    const [tries, setTries] = useState(0);
+    console.log(tries);
 
     const openBox = (id: number) => {
         const itemsCopy = [...items];
@@ -30,25 +37,25 @@ const App = () => {
         itemsCopy[id] = boxCopy;
 
         setItems(itemsCopy);
+        setTries(tries + 1)
     };
 
 
     return (
         <div className="App">
-            <h2>Try to find a ring!</h2>
+            <h2>Try to find a Medal!</h2>
             <div className='box-wrap'>
                 {items.map((box, index) => (
                     <GameBox
-                             key={index}
-                             hasItem={box.hasItem}
-                             clicked={box.clicked}
-                             openBox={() => openBox(index)}
+                        key={index}
+                        hasItem={box.hasItem}
+                        clicked={box.clicked}
+                        openBox={() => openBox(index)}
                     />
                 ))}
             </div>
-            <button onClick={createItems}>Reset</button>
-            <p>Tries: {items.length}</p>
-            <p>Boxes: {items.length}</p>
+            <button onClick={reset}>Reset</button>
+            <p>Tries: {tries}</p>
         </div>
     );
 }

@@ -29,6 +29,16 @@
 }
 
 .Box-clicked {
-  background: white;
+  background-image: url("https://img.favpng.com/19/6/24/check-mark-computer-icons-sign-clip-art-png-favpng-iFiVE36gqaa5HBVQ4AWZz1tHP.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*background: white;*/
   border: 1px solid red;
+}
+
+.Box-clicked-find {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/3652/3652294.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid darkgreen;
 }
