@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import './App.css';
 import GameBox from "./components/GameBox/GameBox";
-import {ITriesProps} from "./components/types";
+import {Sell} from "./components/types";
+
 
 const App = () => {
 
-    const createItems = () => {
+    const createItems = (): Sell[] => {
 
-        const items = [];
+        const items: Sell[] = [];
         for (let i = 0; i < 36; i++) {
             const box = {hasItem: false, clicked: false};
             items.push(box);
@@ -28,7 +29,7 @@ const App = () => {
 
 
     const [tries, setTries] = useState(0);
-    console.log(tries);
+
 
     const openBox = (id: number) => {
         const itemsCopy = [...items];
@@ -36,8 +37,12 @@ const App = () => {
         boxCopy.clicked = true;
         itemsCopy[id] = boxCopy;
 
+
         setItems(itemsCopy);
-        setTries(tries + 1)
+        if (!items[id].clicked){
+            setTries(tries + 1)
+        }
+
     };
 
 
