@@ -5,7 +5,6 @@ interface IProps {
     hasItem: boolean;
     clicked: boolean;
     openBox: React.MouseEventHandler;
-
 }
 
 const GameBox: React.FC<IProps> = ({openBox, clicked, hasItem}) => {
@@ -16,7 +15,6 @@ const GameBox: React.FC<IProps> = ({openBox, clicked, hasItem}) => {
     }
     if (clicked && hasItem) {
         boxClasses.push('Box-clicked-find');
-
     }
 
     return (

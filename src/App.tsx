@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
-import GameBox from "./components/GameBox/GameBox";
-import {Sell} from "./components/types";
+import {Sell} from "./types";
 import ResetButton from "./components/ResetButton/ResetButton";
-import './App.css';
 import TriesCounts from "./components/TriesCounts/TriesCounts";
-
+import BoxesDesk from "./components/BoxesDesk/BoxesDesk";
+import './App.css';
 
 const App = () => {
 
@@ -22,16 +21,14 @@ const App = () => {
         return items;
     }
 
-    const reset = () =>{
+    const reset = () => {
         setItems(createItems());
-        setTries(0)
+        setTries(0);
     }
 
     const [items, setItems] = useState(createItems());
 
-
     const [tries, setTries] = useState(0);
-
 
     const openBox = (id: number) => {
         const itemsCopy = [...items];
@@ -39,34 +36,22 @@ const App = () => {
         boxCopy.clicked = true;
         itemsCopy[id] = boxCopy;
 
-
         setItems(itemsCopy);
-        if (!items[id].clicked){
-            setTries(tries + 1)
+
+        if (!items[id].clicked) {
+            setTries(tries + 1);
         }
 
     };
 
-
     return (
         <div className="App">
             <h2>Try to find a Medal!</h2>
-            <div className='box-wrap'>
-                {items.map((box, index) => (
-                    <GameBox
-                        key={index}
-                        hasItem={box.hasItem}
-                        clicked={box.clicked}
-                        openBox={() => openBox(index)}
-                    />
-                ))}
-            </div>
+            <BoxesDesk items={items} openBox={openBox}/>
             <ResetButton reset={reset}/>
             <TriesCounts tries={tries}/>
-            {/*<p className='tries'>Tries: <span className='tries-counts'>{tries}</span></p>*/}
         </div>
     );
-}
-
+};
 
 export default App;
