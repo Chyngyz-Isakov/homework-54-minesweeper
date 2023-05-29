@@ -14,7 +14,7 @@ const GameBox: React.FC<IProps> = ({openBox, clicked, hasItem}) => {
     if (clicked) {
         boxClasses.push('Box-clicked');
     }
-    if (clicked && hasItem){
+    if (clicked && hasItem) {
         boxClasses.push('Box-clicked-find');
 
     }

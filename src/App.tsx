@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import GameBox from "./components/GameBox/GameBox";
 import {Sell} from "./components/types";
+import ResetButton from "./components/ResetButton/ResetButton";
 
 
 const App = () => {
@@ -59,8 +60,8 @@ const App = () => {
                     />
                 ))}
             </div>
-            <button onClick={reset}>Reset</button>
-            <p>Tries: {tries}</p>
+            <ResetButton reset={reset}/>
+            <p className='tries-counts'>Tries: {tries}</p>
         </div>
     );
 }
